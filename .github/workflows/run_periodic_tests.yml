@@ -88,14 +88,14 @@ jobs:
         run: |
           python -m pip install --upgrade pip wheel setuptools
           python -m pip install "tox"
-
-      - name: Install scikits.odes and test pybamm_install_odes
-        if: matrix.os == 'ubuntu-latest'
-        run: tox -e odes
-        
+  
       - name: Install SuiteSparse and Sundials
         if: matrix.os == 'ubuntu-latest'
         run: tox -e pybamm-requires
+        
+      - name: Install scikits.odes and test pybamm_install_odes
+        if: matrix.os == 'ubuntu-latest'
+        run: tox -e odes
 
       - name: Run unit tests for GNU/Linux with Python 3.8, 3.10, and 3.11
         if: matrix.os == 'ubuntu-latest' && matrix.python-version != 3.9
