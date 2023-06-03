@@ -12,6 +12,6 @@ def run_unit_tests(session):
             "git",
             "clone",
             "https://github.com/pybind/pybind11.git",
-            "/pybind11",
+            "pybind11/",
             external=True,
         )
