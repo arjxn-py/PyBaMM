@@ -22,6 +22,7 @@ def run_coverage(session):
     session.env["SUNDIALS_INST"] = session.env.get("SUNDIALS_INST", f"{homedir}/.local")
     session.env["LD_LIBRARY_PATH"] = f"{homedir}/.local/lib:{session.env.get('LD_LIBRARY_PATH')}"
     session.install("coverage","scikits.odes")
+    session.run("pip", "install", "-e", ".[dev]")
     if sys.platform != "win32" or sys.platform != "darwin":
         session.run("pybamm_install_jax")
     session.run("coverage", "run", "run-tests.py", "--nosub")
