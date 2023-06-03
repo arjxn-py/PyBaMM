@@ -10,7 +10,8 @@ def run_unit_tests(session):
         session.run("python", "scripts/install_KLU_Sundials.py")
         session.run(
             "git",
-            "clone", "https://github.com/pybind/pybind11.git",
+            "clone",
+            "https://github.com/pybind/pybind11.git",
             "/pybind11",
             external=True,
         )
