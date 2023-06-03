@@ -1,0 +1,14 @@
+2023-06-02 20:26:47,458 - scikits.odes setup - INFO - Starting scikits.odes setup
+2023-06-02 20:26:47,460 - scikits.odes setup - INFO - Looking for sundials at /home/arjxnpy/.local
+2023-06-02 20:26:47,461 - scikits.odes setup - INFO - Looking for sundials at /usr/local
+2023-06-02 20:26:47,462 - scikits.odes setup - INFO - Looking for sundials at /usr
+2023-06-02 20:26:47,462 - scikits.odes setup - INFO - Could not find sundials libraries.
+2023-06-02 20:26:47,463 - scikits.odes setup - INFO - Installing sundials in /home/arjxnpy/.local
+2023-06-02 20:26:47,668 - scikits.odes setup - INFO - Downloading sundials
+2023-06-03 08:23:53,595 - scikits.odes setup - INFO - Starting scikits.odes setup
+2023-06-03 08:23:53,597 - scikits.odes setup - INFO - Looking for sundials at /home/arjxnpy/.local
+2023-06-03 08:23:53,598 - scikits.odes setup - INFO - Looking for sundials at /usr/local
+2023-06-03 08:23:53,599 - scikits.odes setup - INFO - Looking for sundials at /usr
+2023-06-03 08:23:53,600 - scikits.odes setup - INFO - Could not find sundials libraries.
+2023-06-03 08:23:53,600 - scikits.odes setup - INFO - Installing sundials in /home/arjxnpy/.local
+2023-06-03 08:23:53,928 - scikits.odes setup - INFO - Downloading sundials
