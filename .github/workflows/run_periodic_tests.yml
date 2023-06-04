@@ -112,7 +112,7 @@ jobs:
 
       - name: Run unit tests for Windows and MacOS
         if: matrix.os != 'ubuntu-latest'
-        run: python -m tox -e mac-windows-unit
+        run: python -m nox -s mac-windows-unit
 
       - name: Run integration tests for Windows and MacOS
         if: matrix.os != 'ubuntu-latest'
