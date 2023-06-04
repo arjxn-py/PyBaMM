@@ -124,4 +124,4 @@ jobs:
 
       - name: Install dev dependencies and run example tests
         if: matrix.os == 'ubuntu-latest'
-        run: tox -e examples
+        run: nox -s examples
