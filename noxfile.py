@@ -33,7 +33,7 @@ def run_coverage(session):
     session.run("coverage", "xml")
 
 
-@nox.session(name="integration",reuse_venv=True)
+@nox.session(name="integration", reuse_venv=True)
 def run_integration(session):
     session.run("pip", "install", "-e", ".[dev]")
     session.run("python", "run-tests.py", "--integration")
