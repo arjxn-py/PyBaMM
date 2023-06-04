@@ -37,3 +37,9 @@ def run_coverage(session):
 def run_integration(session):
     session.run("pip", "install", "-e", ".[dev]")
     session.run("python", "run-tests.py", "--integration")
+
+
+@nox.session(name="doctests",reuse_venv=True)
+def run_doctests(session):
+    session.run("pip", "install", "-e", ".[docs]")
+    session.run("python", "run-tests.py", "--doctest")

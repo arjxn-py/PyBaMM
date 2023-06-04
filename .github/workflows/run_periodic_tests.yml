@@ -120,7 +120,7 @@ jobs:
 
       - name: Install docs dependencies and run doctests
         if: matrix.os == 'ubuntu-latest'
-        run: tox -e doctests
+        run: nox -s doctests
 
       - name: Install dev dependencies and run example tests
         if: matrix.os == 'ubuntu-latest'
