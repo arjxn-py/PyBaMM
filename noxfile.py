@@ -62,3 +62,9 @@ def run_doctests(session):
 def run_mac_windows_unit(session):
     session.run("pip", "install", "-e", ".[dev]")
     session.run("python", "run-tests.py", "--unit")
+
+
+@nox.session(name="mac-windows-integration", reuse_venv=True)
+def run_mac_windows_integration(session):
+    session.run("pip", "install", "-e", ".[dev]")
+    session.run("python", "run-tests.py", "--integration")
