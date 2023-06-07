@@ -45,14 +45,8 @@ def run_doctests(session):
     session.run("python", "run-tests.py", "--doctest")
 
 
-@nox.session(name="doctests", reuse_venv=True)
-def run_doctests(session):
-    session.run("pip", "install", "-e", ".[docs]")
-    session.run("python", "run-tests.py", "--doctest")
-
-
 @nox.session(name="unit", reuse_venv=True)
-def run_doctests(session):
+def run_unit(session):
     session.run("pip", "install", "-e", ".[dev]")
     session.run("pybamm_install_jax")
     session.run("python", "run-tests.py", "--unit")
