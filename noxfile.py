@@ -28,7 +28,7 @@ def run_coverage(session):
     session.run("pip", "install", "-e", ".[dev]")
     if sys.platform != "win32" or sys.platform != "darwin":
         session.run("pybamm_install_jax")
-    session.run("coverage", "run", "run-tests.py", "--nosub")
+    session.run("coverage", "run", "--rcfile=.coveragerc", "run-tests.py", "--nosub")
     session.run("coverage", "combine")
     session.run("coverage", "xml")
 
