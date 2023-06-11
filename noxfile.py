@@ -25,7 +25,7 @@ def run_coverage(session):
         "LD_LIBRARY_PATH"
     ] = f"{homedir}/.local/lib:{session.env.get('LD_LIBRARY_PATH')}"
     session.install("coverage")
-    session.run("pip", "install", "-e", ".[dev]")
+    session.run("pip", "install", "-e", ".[pybamm_requires]")
     if sys.platform != "win32" or sys.platform != "darwin":
         session.install("scikits.odes")
         session.run("pybamm_install_jax")
@@ -36,7 +36,7 @@ def run_coverage(session):
 
 @nox.session(name="integration", reuse_venv=True)
 def run_integration(session):
-    session.run("pip", "install", "-e", ".[dev]")
+    session.run("pip", "install", "-e", ".[pybamm_requires]")
     session.run("python", "run-tests.py", "--integration")
 
 
@@ -48,24 +48,24 @@ def run_doctests(session):
 
 @nox.session(name="unit", reuse_venv=True)
 def run_unit(session):
-    session.run("pip", "install", "-e", ".[dev]")
+    session.run("pip", "install", "-e", ".[pybamm_requires]")
     session.run("pybamm_install_jax")
     session.run("python", "run-tests.py", "--unit")
 
 
 @nox.session(name="mac-windows-unit", reuse_venv=True)
 def run_mac_windows_unit(session):
-    session.run("pip", "install", "-e", ".[dev]")
+    session.run("pip", "install", "-e", ".[pybamm_requires]")
     session.run("python", "run-tests.py", "--unit")
 
 
 @nox.session(name="mac-windows-integration", reuse_venv=True)
 def run_mac_windows_integration(session):
-    session.run("pip", "install", "-e", ".[dev]")
+    session.run("pip", "install", "-e", ".[pybamm_requires]")
     session.run("python", "run-tests.py", "--integration")
 
 
 @nox.session(name="examples", reuse_venv=True)
 def run_examples(session):
-    session.run("pip", "install", "-e", ".[dev]")
+    session.run("pip", "install", "-e", ".[pybamm_requires]")
     session.run("python", "run-tests.py", "--examples")
