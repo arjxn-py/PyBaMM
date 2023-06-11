@@ -36,10 +36,7 @@ def run_coverage(session):
 
 @nox.session(name="integration", reuse_venv=True)
 def run_integration(session):
-    if sys.platform == "linux":
-        session.run("pip", "install", "-e", ".[dev]")
-    else:
-        session.run("pip", "install", "-e", ".[pybamm_requires]")
+    session.run("pip", "install", "-e", ".[pybamm_requires]")
     session.run("python", "run-tests.py", "--integration")
 
 
