@@ -37,6 +37,8 @@ def run_coverage(session):
 @nox.session(name="integration", reuse_venv=True)
 def run_integration(session):
     session.run("pip", "install", "-e", ".[pybamm_requires]")
+    if sys.platform != "win32" or sys.platform != "darwin":
+        session.install("scikits.odes")
     session.run("python", "run-tests.py", "--integration")
 
 
@@ -57,12 +59,6 @@ def run_unit(session):
 def run_mac_windows_unit(session):
     session.run("pip", "install", "-e", ".[pybamm_requires]")
     session.run("python", "run-tests.py", "--unit")
-
-
-@nox.session(name="mac-windows-integration", reuse_venv=True)
-def run_mac_windows_integration(session):
-    session.run("pip", "install", "-e", ".[pybamm_requires]")
-    session.run("python", "run-tests.py", "--integration")
 
 
 @nox.session(name="examples", reuse_venv=True)
