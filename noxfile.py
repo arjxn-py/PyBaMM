@@ -36,9 +36,10 @@ def run_coverage(session):
 
 @nox.session(name="integration", reuse_venv=True)
 def run_integration(session):
-    session.run("pip", "install", "-e", ".[pybamm_requires]")
     if sys.platform == "linux":
-        session.install("scikits.odes")
+        session.run("pip", "install", "-e", ".[dev]")
+    else:
+        session.run("pip", "install", "-e", ".[pybamm_requires]")
     session.run("python", "run-tests.py", "--integration")
 
 
