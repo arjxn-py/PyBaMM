@@ -86,9 +86,9 @@ def run_tests(session):
 
 @nox.session(name="docs", reuse_venv=True)
 def build_docs(session):
-    if not os.path.exists('docs'):
-        os.mkdir('docs/')
-    session.chdir('docs/')
+    if not os.path.exists("docs"):
+        os.mkdir("docs/")
+    session.chdir("docs/")
     envbindir = session.bin
     session.run("pip", "install", "-e", ".")
     session.install(
@@ -98,12 +98,8 @@ def build_docs(session):
         "sphinx_design",
         "sphinx-copybutton",
         "myst-parser",
-        "sphinx-inline-tabs"
+        "sphinx-inline-tabs",
     )
     session.run(
-        "sphinx-autobuild",
-        "--open-browser",
-        "-qT",
-        ".",
-        f"{envbindir}/../tmp/html"
+        "sphinx-autobuild", "--open-browser", "-qT", ".", f"{envbindir}/../tmp/html"
     )
