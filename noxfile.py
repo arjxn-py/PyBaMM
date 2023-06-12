@@ -82,3 +82,28 @@ def run_tests(session):
     if sys.platform == "linux":
         session.run("pybamm_install_jax")
     session.run("python", "run-tests.py", "--all")
+
+
+@nox.session(name="docs", reuse_venv=True)
+def build_docs(session):
+    if not os.path.exists('docs'):
+        os.mkdir('docs/')
+    session.chdir('docs/')
+    envbindir = session.bin
+    session.run("pip", "install", "-e", ".")
+    session.install(
+        "sphinx>=1.5",
+        "pydata-sphinx-theme",
+        "sphinx-autobuild",
+        "sphinx_design",
+        "sphinx-copybutton",
+        "myst-parser",
+        "sphinx-inline-tabs"
+    )
+    session.run(
+        "sphinx-autobuild",
+        "--open-browser",
+        "-qT",
+        ".",
+        f"{envbindir}/../tmp/html"
+    )
