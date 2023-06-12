@@ -92,12 +92,12 @@ jobs:
         if: matrix.os == 'ubuntu-latest'
         run: nox -s pybamm-requires
 
-      - name: Run unit tests for GNU/Linux with Python 3.8, 3.10, and 3.11
-        if: matrix.os == 'ubuntu-latest' && matrix.python-version != 3.9
+      - name: Run unit tests for GNU/Linux with Python 3.8, 3.9, and 3.10
+        if: matrix.os == 'ubuntu-latest' && matrix.python-version != 3.11
         run: nox -s unit
 
-      - name: Run unit tests for GNU/Linux with Python 3.9 and generate coverage report
-        if: matrix.os == 'ubuntu-latest' && matrix.python-version == 3.9
+      - name: Run unit tests for GNU/Linux with Python 3.11 and generate coverage report
+        if: matrix.os == 'ubuntu-latest' && matrix.python-version == 3.11
         run: nox -s coverage
 
       - name: Upload coverage report
