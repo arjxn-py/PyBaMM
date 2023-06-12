@@ -25,7 +25,7 @@ def run_coverage(session):
         "LD_LIBRARY_PATH"
     ] = f"{homedir}/.local/lib:{session.env.get('LD_LIBRARY_PATH')}"
     session.install("coverage")
-    session.run("pip", "install", "-e", ".[pybamm_requires]")
+    session.run("pip", "install", "-e", ".")
     if sys.platform != "win32" or sys.platform != "darwin":
         session.install("scikits.odes")
         session.run("pybamm_install_jax")
@@ -36,7 +36,7 @@ def run_coverage(session):
 
 @nox.session(name="integration", reuse_venv=True)
 def run_integration(session):
-    session.run("pip", "install", "-e", ".[pybamm_requires]")
+    session.run("pip", "install", "-e", ".")
     session.run("python", "run-tests.py", "--integration")
 
 
@@ -48,7 +48,7 @@ def run_doctests(session):
 
 @nox.session(name="unit", reuse_venv=True)
 def run_unit(session):
-    session.run("pip", "install", "-e", ".[pybamm_requires]")
+    session.run("pip", "install", "-e", ".")
     if sys.platform == "linux":
         session.run("pybamm_install_jax")
     session.run("python", "run-tests.py", "--unit")
