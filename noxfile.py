@@ -66,6 +66,7 @@ def set_dev(session):
     LD_LIBRARY_PATH = f"{homedir}/.local/lib:{session.env.get('LD_LIBRARY_PATH')}"
     envbindir = session.bin
     session.run("pip", "install", "-e", ".[dev]")
+    session.install("cmake")
     session.run(
         "echo",
         "export",
@@ -73,3 +74,11 @@ def set_dev(session):
         ">>",
         f"{envbindir}/activate",
     )
+
+
+@nox.session(name="tests", reuse_venv=True)
+def run_tests(session):
+    session.run("pip", "install", "-e", ".")
+    if sys.platform == "linux":
+        session.run("pybamm_install_jax")
+    session.run("python", "run-tests.py", "--all")
