@@ -58,3 +58,12 @@ def run_unit(session):
 def run_examples(session):
     session.run("pip", "install", "-e", ".[dev]")
     session.run("python", "run-tests.py", "--examples")
+
+
+@nox.session(name="dev", reuse_venv=True)
+def set_dev(session):
+    homedir = os.getenv("HOME")
+    LD_LIBRARY_PATH= f"{homedir}/.local/lib:{session.env.get('LD_LIBRARY_PATH')}"
+    envbindir = session.bin
+    session.run("pip", "install", "-e", ".[dev]")
+    session.run("echo", "export", f"LD_LIBRARY_PATH={LD_LIBRARY_PATH}", ">>", f"{envbindir}/activate")
