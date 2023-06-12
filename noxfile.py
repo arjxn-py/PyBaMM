@@ -49,13 +49,8 @@ def run_doctests(session):
 @nox.session(name="unit", reuse_venv=True)
 def run_unit(session):
     session.run("pip", "install", "-e", ".[pybamm_requires]")
-    session.run("pybamm_install_jax")
-    session.run("python", "run-tests.py", "--unit")
-
-
-@nox.session(name="mac-windows-unit", reuse_venv=True)
-def run_mac_windows_unit(session):
-    session.run("pip", "install", "-e", ".[pybamm_requires]")
+    if sys.platform == "linux":
+        session.run("pybamm_install_jax")
     session.run("python", "run-tests.py", "--unit")
 
 
