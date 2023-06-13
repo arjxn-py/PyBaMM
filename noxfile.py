@@ -5,6 +5,11 @@ import sys
 
 @nox.session(name="pybamm-requires")
 def run_pybamm_requires(session):
+    homedir = os.getenv("HOME")
+    session.env["SUNDIALS_INST"] = session.env.get("SUNDIALS_INST", f"{homedir}/.local")
+    session.env[
+        "LD_LIBRARY_PATH"
+    ] = f"{homedir}/.local/lib:{session.env.get('LD_LIBRARY_PATH')}"
     if sys.platform != "win32" or sys.platform != "darwin":
         session.install("wget", "cmake")
         session.run("python", "scripts/install_KLU_Sundials.py")
