@@ -96,7 +96,6 @@ jobs:
       - name: Install standard Python dependencies
         run: |
           python -m pip install --upgrade pip wheel setuptools
-          python -m pip install "tox<4"
           python -m pip install "nox"
 
       - name: Install SuiteSparse and Sundials
