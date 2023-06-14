@@ -28,7 +28,7 @@ jobs:
         with:
           python-version: 3.8
       - name: Install nox and asv
-        run: pip install -U pip "nox" asv
+        run: pip install -U pip nox asv
       - name: Fetch develop branch
         # Not required when worklow trigerred
         # on develop, but useful when
