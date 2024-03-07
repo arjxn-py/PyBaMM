@@ -259,4 +259,22 @@ from . import callbacks
 #
 # Remove any imported modules, so we don't expose them as part of pybamm
 #
-del sys
+
+__all__ = ['ABSOLUTE_PATH', 'BatchStudy', 'Callback', 'CallbackList',
+           'Citations', 'FLOAT_FORMAT', 'FORMAT', 'FuzzyDict',
+           'JAXLIB_VERSION', 'JAX_VERSION', 'LOG_FORMATTER', 'LoggingCallback',
+           'NO_WGET', 'PARAMETER_PATH', 'SUNDIALS_VERSION', 'Settings',
+           'Simulation', 'Timer', 'TimerTime', 'batch_study',
+           'callback_loop_decorator', 'callbacks', 'citations',
+           'copy_parameter_doc_from_parent', 'discretisations',
+           'doc_extend_parent', 'doc_utils', 'download_extract_library',
+           'experiment', 'expression_tree', 'geometry', 'get_git_commit_info',
+           'get_log_level_func', 'get_new_logger', 'get_parameters_filepath',
+           'have_jax', 'import_optional_dependency', 'input', 'install_jax',
+           'install_odes', 'install_sundials', 'is_constant_and_can_evaluate',
+           'is_jax_compatible', 'is_notebook', 'load', 'load_sim', 'logger',
+           'main', 'meshes', 'models', 'new_levels', 'parameters', 'plotting',
+           'print_citations', 'rmse', 'root_dir', 'script_path',
+           'set_logging_level', 'settings', 'setup_callbacks', 'simulation',
+           'solvers', 'spatial_methods', 'type_definitions',
+           'update_LD_LIBRARY_PATH', 'util', 'version']
