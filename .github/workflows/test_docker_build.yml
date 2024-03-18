@@ -9,7 +9,7 @@ on:
 jobs:
   build_docker_image:
     # This workflow is only of value to PyBaMM and would always be skipped in forks
-    if: github.repository_owner == 'pybamm-team'
+    # if: github.repository_owner == 'pybamm-team'
     runs-on: ubuntu-latest
     name: Build Docker image with all arguments
     steps:
