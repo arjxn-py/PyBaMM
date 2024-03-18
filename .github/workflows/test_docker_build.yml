@@ -1,3 +1,4 @@
+
 name: Build Docker image with all arguments and test script
 
 on:
@@ -25,14 +26,8 @@ jobs:
       - name: Build Docker image with all arguments
         run: docker buildx build --platform linux/arm64 -f scripts/Dockerfile -t pybo:arm64 .
 
-      - name: Run Docker container in detached mode
-        run: docker run -d --name pybo_container pybo:arm64 /bin/bash
-
-      - name: Wait for container to start
-        run: sleep 5
+      - name: Run Docker container
+        run: docker run --name pybo_container pybo:arm64 /bin/bash
 
       - name: Test PyBaMM script
-        run: docker exec -it pybo_container python -c "import pybamm; print(pybamm.have_ida)"
-
-      - name: Clean up container
-        run: docker rm -f pybo_container
+        run: docker exec -it pybo_container python -c "import pybamm; print(pybamm.have_idaklu())"
